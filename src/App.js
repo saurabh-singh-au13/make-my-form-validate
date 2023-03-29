@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
+import Header from "./components/Header";
+import { useState } from "react";
 function App() {
+  const [makeLighterScreen, setMakeLighterScreen] = useState(false);
+
+  const makeLighter = (e) => {
+    e.preventDefault();
+    setMakeLighterScreen(true);
+  };
+
   return (
+    <>
+   {/*  className={valid ? "valid" : "invalid"} */}
+   {/* className = {setMakeLighterScreen === true ? className={light : dark}} */}
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="mode">
+        <div onClick={makeLighter} className={setMakeLighterScreen === true ? "light" : "dark"}>
+          Light
+        </div>
+        {/* <div className="d-mode">Light Mode</div> */}
+      </div>
+      <div className="light">
+        <Header />
+      </div>
+     
     </div>
+    </>
   );
 }
 
